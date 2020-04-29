@@ -5,33 +5,58 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios'
 
 const MemberList = ()=>{
+    
     const members = useSelector(state => state.member);
-    const dispatch = useDispatch();
+    const form = useSelector(state => state.form)
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        getMembers();
+     },[])
+    
     const getMembers = async () => {
         const result = await axios.get(`https://backend-minipj.herokuapp.com/api/members`)
-       
-        const action = {type:'GET_MEMBERS',member: result.data}
-        dispatch(action)
+        console.log("data",members)
+        dispatch = {type:'GET_MEMBERS',member: result.data}
+        
       }
-      useEffect(() => {
-        getMembers()
-      }, [])
-       console.log("data",members)
-      if (!members || !members.length)
-        return (<h2>No data</h2>)
+      
+      const printMembers = ()=>{
+        if(members && members.length){
+            return members.map((member,index)=>{
+                return(
+               <tr>
+                <td>{index+1}</td>
+                <td>{member.name}</td>
+                <td>{member.surname}</td>
+                <td>{member.id}</td>
+                <td>{member.tel}</td>
+               </tr>
 
-    return(
-        <div >
-            {
-                members.map((member, index) => (
-                    <ul key={index} style={{ margin: 5 }}>
-                        <MemberCard  {...member}  />
-                    </ul>
-                ))
-            }
-        </div>
-    )
-
+                )
+            })
+        }
+        else{
+            return(<h1>No data</h1>)
+        }
+    }
+    return (
+    <div className="container-fluid">
+         <table className="table table-bordered"  >
+                <tr >
+                  <th>NO.</th>
+                  <th>Firstname</th>
+                  <th>Lastname</th> 
+                  <th>Id</th>
+                  <th>Telephone Number</th>
+                 
+                </tr>
+                    {printMembers()}  
+            </table>
+                
+     
+    </div>
+  );
+}
 
 }
 export default MemberList

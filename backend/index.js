@@ -9,8 +9,8 @@ app.use(cors());
 app.use('/api', bodyParser.json(), router);   //[use json]
 app.use('/api', bodyParser.urlencoded({ extended: false }), router);
 
-let members = [  { 'no': 0, 'id': "5935512001", 'name': "Nadat" ,'surname':"Kugimiya" ,'Tel':"087"},
-                 { 'no': 1, 'id': "5831512018", 'name': "Yayat" ,'surname':"Urassaya" ,'Tel':"088"}
+let members = [  { 'no': 0, 'id': "5935512001", 'name': "Nadat" ,'surname':"Kugimiya" ,'tel':"087"},
+                 { 'no': 1, 'id': "5831512018", 'name': "Yayat" ,'surname':"Urassaya" ,'tel':"088"}
                ];
 router.route('/members')
     // get all members
@@ -22,7 +22,7 @@ router.route('/members')
     member.name = req.body.name
     member.surname = req.body.surname
     member.id = req.body.id
-    member.Tel = req.body.Tel
+    member.tel = req.body.tel
     members.push(member);
     res.json({ message: 'members created!' })
     })
@@ -38,7 +38,7 @@ router.route('/members/:member_no')
         members[index].name = req.body.name;
         members[index].surname = req.body.surname;
         members[index].id = req.body.id;
-        members[index].Tel = req.body.Tel;
+        members[index].tel = req.body.tel;
     
         res.json({ message: 'member updated!' + req.params.member_no });
     })

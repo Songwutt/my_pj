@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Login from './Login'
 import auth from '../firebase';
 import NavLink from './NavLink';
-import MemberList from './MemberList';
+import InputForm from './InputForm';
 
 const Home = () => {
   const [session, setSession] = useState({
@@ -25,8 +25,7 @@ const Home = () => {
       handleAuth();
     };
   }, []);
-
-
+  
   const handleLogout = () => {
     auth.signOut().then(response => {
       setSession({
@@ -35,16 +34,19 @@ const Home = () => {
       });
     });
   };
+
+
   return (
     <div>
+
+<NavLink></NavLink>
       {session.isLoggedIn ? (
-        // หลัง loginเสร็จ
-        <div>
-          <NavLink></NavLink>
-          <span>
-            <h1>Welcome {session.currentUser && session.currentUser.email} </h1>
-          </span>
-          <MemberList/>
+        
+        <div class="jumbotron text-center">
+          
+            <h3>Welcome {session.currentUser && session.currentUser.email} </h3>
+          
+          <InputForm/>
           <br></br>
           <button
             onClick={handleLogout}>logout</button>

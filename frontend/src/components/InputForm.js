@@ -22,7 +22,7 @@ const InputForm = props => {
     return (
         <div className='form-container'>
             <h2>Add member</h2>
-           {form.name} {form.surname} {form.id} {form.Major} {form.GPA} 
+           {form.name} {form.surname} {form.id} {form.tel}
             <table>
                 <tbody>
                     <tr>
@@ -59,7 +59,7 @@ const InputForm = props => {
                         <td>
                         <input className='inpt'
                                 type="text"
-                                onChange={(e) => dispatch({ type: 'CHANGE_TEL', Tel: e.target.value })}
+                                onChange={(e) => dispatch({ type: 'CHANGE_TEL', tel: e.target.value })}
                         />   
                         </td>
                     </tr>

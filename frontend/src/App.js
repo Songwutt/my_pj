@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-
 import auth from './firebase';
 import './App.css';
 import Home from './components/Home'
@@ -16,9 +15,6 @@ function App() {
     
     
   });
-
-
-
   const handleLogout = () => {
     auth.signOut().then(() => {
       setSession({
@@ -33,7 +29,7 @@ function App() {
       <div>
         <Router>
         <Switch>
-        <Route path='/' exact component={Home}/>
+          <Route path='/' exact component={Home}/>
           <Route path='/About' exact component={About}/>
           <Route path='/Table' exact component={Table}/>
          
