@@ -1,0 +1,24 @@
+.class {
+    display: flex;
+    padding: 189px;
+    /* justify-items: center; */
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    
+  }
+  .class2 {
+    background-color: #914e34;
+    /* background: #fff; */
+  
+    border-radius: 50px;
+    overflow: hidden;
+    box-shadow: 0 3px 20px 0px rgba(255, 2, 2, 0.1);
+    /* border: 5px solid; */
+    padding: 120px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  
