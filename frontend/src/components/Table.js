@@ -1,7 +1,6 @@
 import React from 'react';
 import NavLink from './NavLink';
-import InpuutForm from './InputForm';
-
+import InputForm from './InputForm';
 
 function Table(){
 return(
@@ -11,10 +10,8 @@ return(
       <section class="hero is-primary">
         <div className="container">
           <h1 className="title">Post Page</h1>
-       
-        <InpuutForm/>
+          <InputForm/>
         </div>
-
       </section>
     </div>
     </div>

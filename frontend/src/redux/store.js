@@ -4,7 +4,7 @@ const initialForm = {
     name: '',
     surname: '',
     id: '',
-    Tel: ''
+    tel: ''
   
 }
 const formReducer = (state=initialForm,action)=>{
@@ -13,7 +13,7 @@ const formReducer = (state=initialForm,action)=>{
         case 'CHANGE_NAME': return {...state,name: action.name}
         case 'CHANGE_SURNAME': return {...state,surname: action.surname}
         case 'CHANGE_ID': return {...state,id: action.id}
-        case 'CHANGE_TEL': return {...state,Tel: action.Tel}
+        case 'CHANGE_TEL': return {...state,tel: action.tel}
         default:return state;
     }
 }

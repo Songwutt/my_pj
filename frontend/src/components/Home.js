@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react';
 import Login from './Login'
 import auth from '../firebase';
 import NavLink from './NavLink';
-import InputForm from './InputForm';
+//import InputForm from './InputForm';
+//import MemberCard from './MemberCard';
+import MemberList from './MemberList';
 
 const Home = () => {
   const [session, setSession] = useState({
@@ -46,7 +48,8 @@ const Home = () => {
           
             <h3>Welcome {session.currentUser && session.currentUser.email} </h3>
           
-          <InputForm/>
+          
+          <MemberList/>
           <br></br>
           <button
             onClick={handleLogout}>logout</button>

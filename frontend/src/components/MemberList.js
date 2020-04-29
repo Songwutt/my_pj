@@ -1,29 +1,27 @@
 import React, { useEffect }  from 'react';
-import MemberCard from './MemberCard'
+//import MemberCard from './MemberCard'
 import './MemberList.css';
 import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios'
 
-const MemberList = ()=>{
-    
-    const members = useSelector(state => state.member);
-    const form = useSelector(state => state.form)
-    const dispatch = useDispatch()
-    useEffect(()=>{
-        getMembers();
-     },[])
-    
-    const getMembers = async () => {
-        const result = await axios.get(`https://backend-minipj.herokuapp.com/api/members`)
-        console.log("data",members)
-        dispatch = {type:'GET_MEMBERS',member: result.data}
-        
-      }
-      
-      const printMembers = ()=>{
-        if(members && members.length){
-            return members.map((member,index)=>{
-                return(
+const MemberList =()=>{
+   
+  const members = useSelector(state=> state.member);
+  const form = useSelector(state => state.form)
+  const dispatch = useDispatch()
+   useEffect(()=>{
+      getMembers();
+   },[])
+   const getMembers = async () => {
+      const result = await axios.get(`https://api-mongodb-mini-project.herokuapp.com/api/employee`)
+      console.log(result.data)
+      dispatch({type:'GET_MEMBERS',member: result.data})
+    }
+
+    const printMembers = ()=>{
+      if(members && members.length){
+          return members.map((member,index)=>{
+              return(
                <tr>
                 <td>{index+1}</td>
                 <td>{member.name}</td>
@@ -58,5 +56,5 @@ const MemberList = ()=>{
   );
 }
 
-}
+
 export default MemberList
