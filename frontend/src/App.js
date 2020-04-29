@@ -33,7 +33,7 @@ function App() {
       <div>
         <Router>
         <Switch>
-          <Route path='/' exact component={Home}/>
+        <Route path='/' exact component={Home}/>
           <Route path='/About' exact component={About}/>
           <Route path='/Table' exact component={Table}/>
          

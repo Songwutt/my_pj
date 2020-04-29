@@ -38,10 +38,10 @@ const MemberCard = (props)=>{
     
     return(
         <div >
-          <li>{props.name} {props.surname} : {props.id} : {props.Tel} 
+          <h3>{props.name} {props.surname} : {props.id} : {props.Tel} 
           <button onClick={deleteMember}>Delete</button>
           <button onClick={updateMember}>Update</button>
-          </li>
+          </h3>
     </div>
     )
 
