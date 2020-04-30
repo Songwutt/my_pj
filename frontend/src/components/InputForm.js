@@ -23,7 +23,7 @@ const InputForm = props => {
         
         
         <div className='form-container'>
-            <h1>Add Member</h1>
+           
            {form.name} {form.surname} {form.id} {form.tel} {form.GPA} 
            <form action="/action_page.php">
                 

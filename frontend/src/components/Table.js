@@ -9,11 +9,17 @@ const Table = () => {
     
     return (
         <div >
+            <img
+            src={'https://cdn3.iconfinder.com/data/icons/basic-ui-1-regular/64/1_1_add_friend_member_people_plus_person_human-512.png'}
+            alt="Cinque Terre" width="300" height="200"
+          />
+          <br></br>
+          <h1>Add Member</h1>
             <div className="container" style={{ marginTop: "10px" }}>
                 <div className="container-fluid">
                     <br />
                     <InputForm />
-                    <MemberList/>
+                  
                 </div>
             </div>
         </div>
