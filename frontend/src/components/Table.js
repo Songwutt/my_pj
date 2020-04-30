@@ -1,21 +1,22 @@
-import React from 'react';
+import React , {useState}from 'react';
+import axios from 'axios'
 import NavLink from './NavLink';
 import InputForm from './InputForm';
+import MemberList from './MemberList';
+import MemberCard from './MemberCard'
 
-function Table(){
-return(
-    <div>
-      <NavLink></NavLink>
-      <div className="has-text-centered">
-      <section class="hero is-primary">
-        <div className="container">
-          <h1 className="title">Post Page</h1>
-          <InputForm/>
+const ApplyJob=()=>{
+  const [page] = useState('Admin')
+    return(
+        <div >
+            {<NavLink/>}
+            <div className="container" style={{marginTop:"20px"}}>
+            <MemberCard/>
+           
+            <br/>
+            <InputForm/>
+            </div>
         </div>
-      </section>
-    </div>
-    </div>
-  )
+    )
 }
-
-export default Table 
+export default ApplyJob

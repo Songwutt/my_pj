@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Login from './Login'
-import auth from '../firebase';
+import auth from '../firebase'; 
 import NavLink from './NavLink';
-//import InputForm from './InputForm';
-//import MemberCard from './MemberCard';
-import MemberList from './MemberList';
+import MemberList from './MemberList'
+import MemberCard from './MemberCard';
 
 const Home = () => {
   const [session, setSession] = useState({
@@ -12,6 +11,7 @@ const Home = () => {
     currentUser: null,
     errorMessage: null
   });
+  console.log("session: " + session.isLoggedIn)
   useEffect(() => {
     const handleAuth = auth.onAuthStateChanged(user => {
       if (user) {
@@ -27,7 +27,8 @@ const Home = () => {
       handleAuth();
     };
   }, []);
-  
+ 
+
   const handleLogout = () => {
     auth.signOut().then(response => {
       setSession({
@@ -37,33 +38,36 @@ const Home = () => {
     });
   };
 
-
   return (
     <div>
-
-<NavLink></NavLink>
       {session.isLoggedIn ? (
-        
-        <div class="jumbotron text-center">
+        // หลัง loginเสร็จ
+        <div>
+        <NavLink></NavLink>
+          <span>
+            <h1>Welcome  {session.currentUser && session.currentUser.displayName}</h1>
+            {session.currentUser && session.currentUser.email}
+            <br/>
+            <MemberList/>
+          </span>
           
-            <h3>Welcome {session.currentUser && session.currentUser.email} </h3>
-          
-          
-          <MemberList/>
-          <br></br>
-          <button
-            onClick={handleLogout}>logout</button>
+            <br/>
+           
+            <button  
+                onClick={handleLogout}>logout
+            </button>
         </div>
 
       ) : (
-          //   ยังไม่ได้ login
+        //   ยังไม่ได้ login
           <div>
-            <Login setSession={setSession} />
-
-          </div>
+          <Login setSession={setSession} />
+          
+           </div>
         )}
 
     </div>
   )
 }
 export default Home
+

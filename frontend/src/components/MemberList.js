@@ -5,15 +5,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios'
 
 const MemberList =()=>{
-   
   const members = useSelector(state=> state.member);
-  const form = useSelector(state => state.form)
   const dispatch = useDispatch()
    useEffect(()=>{
       getMembers();
    },[])
    const getMembers = async () => {
-      const result = await axios.get(`https://api-mongodb-mini-project.herokuapp.com/api/employee`)
+      const result = await axios.get(`https://backend-minipj.herokuapp.com/api/members`)
       console.log(result.data)
       dispatch({type:'GET_MEMBERS',member: result.data})
     }
@@ -28,6 +26,7 @@ const MemberList =()=>{
                 <td>{member.surname}</td>
                 <td>{member.id}</td>
                 <td>{member.tel}</td>
+             
                </tr>
 
                 )
@@ -55,6 +54,4 @@ const MemberList =()=>{
     </div>
   );
 }
-
-
 export default MemberList

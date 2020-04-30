@@ -1,15 +1,16 @@
-import React from 'react'
+import React from 'react';
+ 
 
 function NavLink() {
 
+   
     return (
-        <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-            <a class="nav-link" href="/">Home</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <div>
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/Table">Table</a>
                     </li>
@@ -17,11 +18,8 @@ function NavLink() {
                         <a class="nav-link" href="/About">About</a>
                     </li>
                 </ul>
-            </div>
-        </nav>
-    )
+            </nav>
+        </div>
+    );
 }
-
 export default NavLink
-
-
