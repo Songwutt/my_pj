@@ -22,13 +22,18 @@ class Home extends Component {
       <Router>
         <form>
           <div className="">
+            
             <NavLink />
+          <br></br>
+          <br></br>
+          <br></br>
             <Switch>
-
               <Route path="/Table" exact component={Table} />
               <Route path="/About" exact component={About} />
+              <Route path="/test" exact component={test} />
+              <MemberList />
             </Switch>
-            <MemberList />
+           
 
             <botton onClick={this.logout} style={{ marginLeft: '10px' }} class="btn btn-danger" >Logout</botton>
           </div>

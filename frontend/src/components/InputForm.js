@@ -20,10 +20,13 @@ const InputForm = props => {
 
     
     return (
+        
+        
         <div className='form-container'>
-            <h2>Add Member</h2>
+            <h1>Add Member</h1>
            {form.name} {form.surname} {form.id} {form.tel} {form.GPA} 
-            <table>
+           <form action="/action_page.php">
+                
                 <tbody>
                     <tr>
                         <td>Name</td>
@@ -58,7 +61,7 @@ const InputForm = props => {
                         <td>Tel</td>
                         <td>
                         <input className='inpt'
-                                type="text"
+                                type="number"
                                 onChange={(e) => dispatch({ type: 'CHANGE_TEL', tel: e.target.value })}
                         />   
                         </td>
@@ -72,9 +75,12 @@ const InputForm = props => {
                         </td>
                     </tr>
                 </tbody>
-            </table>
+                </form>
+            
         </div>
-    )
+       
+        
+    );
 }
 
 export default InputForm

@@ -7,7 +7,7 @@ function NavLink() {
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <Link to="/Home">
+                        <Link to="/test">
                             <li><h4 class="btn btn-danger">Home</h4></li>
                         </Link>
                     </li>

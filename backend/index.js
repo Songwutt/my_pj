@@ -9,8 +9,8 @@ app.use(cors());
 app.use('/api', bodyParser.json(), router);   //[use json]
 app.use('/api', bodyParser.urlencoded({ extended: false }), router);
 
-let members = [  { 'no': 0, 'id': "5935512001", 'name': "Nadat" ,'surname':"Kugimiya" ,'tel':"0814152526"},
-                  { 'no': 1, 'id': "5831512018", 'name': "Yaya",'surname':"Urassaya"  ,'tel':"0814152526"}
+let members = [  { 'no': 0, 'id': "P12", 'name': "Sarawur" ,'surname':"Kugimiya" ,'tel':"0814152526"},
+                  { 'no': 1, 'id': "P13", 'name': "Weerasak",'surname':"Urassaya"  ,'tel':"0814152526"}
                ];
 router.route('/members')
     // get all members

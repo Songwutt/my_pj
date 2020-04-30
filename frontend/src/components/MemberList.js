@@ -20,7 +20,11 @@ const MemberList = ()=>{
       if (!members || !members.length)
         return (<h2>No data</h2>)
 
-    return(
+        
+  
+  
+return(
+      
         <div >
             {
                 members.map((member, index) => (
@@ -30,6 +34,7 @@ const MemberList = ()=>{
                 ))
             }
         </div>
+       
     )
 
 

@@ -37,16 +37,20 @@ const MemberCard = (props)=>{
        
     
        return(
-         
-        <div >
-          <table id="customers">
-            <tr>
-              <th>Name</th>
-              <th>Surname</th>
-              <th>ID nunber</th>
-              <th>Tel.</th>
-              <th>Edit</th>
-            </tr>
+        
+        <div className="container-fluid">
+        
+        <table class="table">
+  <thead>
+    <tr>
+      
+      <th scope="col">First</th>
+      <th scope="col">Last</th>
+      <th scope="col">ID number</th>
+      <th scope="col">Phone number</th>
+    </tr>
+  </thead>
+ 
             <tr>
               <td>{props.name}</td>
               <td>{props.surname}</td>
