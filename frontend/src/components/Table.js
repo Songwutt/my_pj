@@ -5,18 +5,23 @@ import InputForm from './InputForm';
 import MemberList from './MemberList';
 import MemberCard from './MemberCard'
 
-const ApplyJob=()=>{
+const Table=()=>{
   const [page] = useState('Admin')
     return(
         <div >
             {<NavLink/>}
             <div className="container" style={{marginTop:"20px"}}>
-            <MemberCard/>
+            
+            <div className="container-fluid">
+         <table className="table table-bordered"  >
+        <MemberCard/>
+        </table>
            
             <br/>
             <InputForm/>
             </div>
+            </div>
         </div>
     )
 }
-export default ApplyJob
+export default Table

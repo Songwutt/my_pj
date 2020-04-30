@@ -12,61 +12,60 @@ const InputForm = props => {
         await axios.post(`https://backend-minipj.herokuapp.com/api/members`, form)
         dispatch({
             type: 'ADD_MEMBER', member: {
-                no: members.length > 0 ? members[members.length-1].no+1 : 0,
+                no: members.length > 0 ? members[members.length - 1].no + 1 : 0,
                 ...form
             }
         })
     }
 
-    
     return (
-        <div className='form-container'>
+        <div className="jumbotron">
             <h2>Add member</h2>
-           {form.name} {form.surname} {form.id} {form.tel}
+            {form.name} {form.surname} {form.id} {form.tel}
             <table>
                 <tbody>
                     <tr>
-                        
+
                         <td>
                             <input className='inpt'
                                 type="text"
                                 onChange={(e) => dispatch({ type: 'CHANGE_NAME', name: e.target.value })}
-                                placeholder="Name"/>
-                                
+                                placeholder="Name" />
+
                         </td>
                     </tr>
                     <tr>
-                       
+
                         <td>
-                        <input className='inpt'
+                            <input className='inpt'
                                 type="text"
                                 onChange={(e) => dispatch({ type: 'CHANGE_SURNAME', surname: e.target.value })}
-                                placeholder="Surname"/>
+                                placeholder="Surname" />
                         </td>
                     </tr>
                     <tr>
-                        
+
                         <td>
-                        <input className='inpt'
+                            <input className='inpt'
                                 type="text"
                                 onChange={(e) => dispatch({ type: 'CHANGE_ID', id: e.target.value })}
-                                placeholder="ID"/>   
+                                placeholder="ID" />
                         </td>
                     </tr>
                     <tr>
-                        
+
                         <td>
-                        <input className='inpt'
-                                type="text"
+                            <input className='inpt'
+                                type="number"
                                 onChange={(e) => dispatch({ type: 'CHANGE_TEL', tel: e.target.value })}
-                                placeholder="Tel"/>   
+                                placeholder="Tel" />
                         </td>
                     </tr>
-                    
+
                     <tr>
                         <td></td>
                         <td>
-                            <button className='btn' onClick ={addMember}>CREATE</button>
+                            <button className='btn' onClick={addMember}>CREATE</button>
                         </td>
                     </tr>
                 </tbody>
