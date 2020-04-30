@@ -1,73 +1,42 @@
-import React, { useState, useEffect } from 'react';
-import Login from './Login'
-import auth from '../firebase'; 
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import NavLink from './NavLink';
 import MemberList from './MemberList'
-import MemberCard from './MemberCard';
+import Table from './Table'
+import About from './About'
+import fire from '../firebase/config'
+import test from '../components/test'
+class Home extends Component {
 
-const Home = () => {
-  const [session, setSession] = useState({
-    isLoggedIn: false,
-    currentUser: null,
-    errorMessage: null
-  });
-  console.log("session: " + session.isLoggedIn)
-  useEffect(() => {
-    const handleAuth = auth.onAuthStateChanged(user => {
-      if (user) {
-        setSession({
-          isLoggedIn: true,
-          currentUser: user,
-          errorMessage: null
-        });
-      }
-    });
+  constructor(props) {
+    super(props);
+    this.logout = this.logout.bind(this);
+  }
 
-    return () => {
-      handleAuth();
-    };
-  }, []);
- 
 
-  const handleLogout = () => {
-    auth.signOut().then(response => {
-      setSession({
-        isLoggedIn: false,
-        currentUser: null
-      });
-    });
-  };
+  logout() {
+    fire.auth().signOut();
+  }
+  render() {
+    return (
+      <Router>
+        <form>
+          <div className="">
+            <NavLink />
+            <Switch>
 
-  return (
-    <div>
-      {session.isLoggedIn ? (
-        // หลัง loginเสร็จ
-        <div>
-        <NavLink></NavLink>
-          <span>
-            <h1>Welcome  {session.currentUser && session.currentUser.displayName}</h1>
-            {session.currentUser && session.currentUser.email}
-            <br/>
-            <MemberList/>
-          </span>
-          
-            <br/>
-           
-            <button  
-                onClick={handleLogout}>logout
-            </button>
-        </div>
+              <Route path="/Table" exact component={Table} />
+              <Route path="/About" exact component={About} />
+            </Switch>
+            <MemberList />
 
-      ) : (
-        //   ยังไม่ได้ login
-          <div>
-          <Login setSession={setSession} />
-          
-           </div>
-        )}
+            <botton onClick={this.logout} style={{ marginLeft: '10px' }} class="btn btn-danger" >Logout</botton>
+          </div>
+        </form>
+      </Router>
+    );
+  }
 
-    </div>
-  )
 }
-export default Home
 
+export default Home;

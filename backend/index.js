@@ -9,8 +9,8 @@ app.use(cors());
 app.use('/api', bodyParser.json(), router);   //[use json]
 app.use('/api', bodyParser.urlencoded({ extended: false }), router);
 
-let members = [  { 'no': 0, 'id': 01, 'name': "Sarawut" ,'surname':"Junpan" ,'tel':"0814152526"},
-                 { 'no': 1, 'id': "02", 'name': "Werapat" ,'surname':"Urassaya" ,'tel':"0875462514"}
+let members = [  { 'no': 0, 'id': "5935512001", 'name': "Nadat" ,'surname':"Kugimiya" ,'tel':"0814152526"},
+                  { 'no': 1, 'id': "5831512018", 'name': "Yaya",'surname':"Urassaya"  ,'tel':"0814152526"}
                ];
 router.route('/members')
     // get all members
@@ -23,6 +23,7 @@ router.route('/members')
     member.surname = req.body.surname
     member.id = req.body.id
     member.tel = req.body.tel
+
     members.push(member);
     res.json({ message: 'members created!' })
     })
@@ -32,17 +33,16 @@ router.route('/members/:member_no')
         let index = members.findIndex(member => (member.no === +no))
         res.json(members[index])                   // get a member
     })
-    .put((req, res) => {                               // Update a member
+    .put((req, res) => {                               // Update a bear
         let no = req.params.member_no
         let index = members.findIndex(member => (member.no === +no))
         members[index].name = req.body.name;
         members[index].surname = req.body.surname;
         members[index].id = req.body.id;
         members[index].tel = req.body.tel;
-    
         res.json({ message: 'member updated!' + req.params.member_no });
     })
-    .delete((req, res) => {                   // Delete a member
+    .delete((req, res) => {                   // Delete a bear
         let no = req.params.member_no
         let index = members.findIndex(member => member.no === +no)
         members.splice(index, 1)
@@ -51,4 +51,4 @@ router.route('/members/:member_no')
 
 
 app.use("*", (req, res) => res.status(404).send('404 Not found'));
-app.listen(process.env.PORTls||80, () => console.log("Server is running"));
+app.listen(80, () => console.log("Server is running"));

@@ -5,7 +5,6 @@ const initialForm = {
     surname: '',
     id: '',
     tel: ''
-  
 }
 const formReducer = (state=initialForm,action)=>{
     switch(action.type){

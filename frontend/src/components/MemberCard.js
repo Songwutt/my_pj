@@ -1,76 +1,67 @@
-import React, { useEffect } from 'react';
-import './MemberCard.css';
+import React, { useEffect }  from 'react';
+import './MemberList.css';
 import axios from 'axios'
 import { useDispatch, useSelector } from 'react-redux';
-import InputForm from './InputForm'
 
-const MemberList = () => {
+const MemberCard = (props)=>{
+    const dispatch = useDispatch();
+    const form = useSelector(state => state.form)
 
-  const members = useSelector(state => state.member);
-  const form = useSelector(state => state.form)
-  const dispatch = useDispatch()
-  useEffect(() => {
-    getMembers();
-  }, [])
-  const getMembers = async () => {
-    const result = await axios.get(`https://backend-minipj.herokuapp.com/api/members`)
-    console.log(result.data)
-    dispatch({ type: 'GET_MEMBERS', member: result.data })
-  }
+    const getMembers = async () => {
+        const result = await axios.get(`http://localhost/api/members`)
+       
+        const action = {type:'GET_MEMBERS',member: result.data}
+        dispatch(action)
+      }
+      useEffect(() => {
+        getMembers()
+      }, [])
 
-  const deleteMember = async (member_id) => {
-    await axios.delete(`https://backend-minipj.herokuapp.com/api/members/${member_id}`)
-    dispatch({ type: 'DELETE_MEMBER', id: member_id })
-    getMembers()
-
-  }
-  const updateMember = async (member_id) => {
-    await axios.put(`https://backend-minipj.herokuapp.com/api/members/${member_id}`, form)
-    dispatch(
-      {
-        type: 'UPDATE_MEMBER',
-        id: member_id,
-        member: { ...form, id: member_id }
-      })
-    getMembers();
-  }
-  const printMembers = ()=>{
-    if(members && members.length){
-        return members.map((member,index)=>{
-            return(
-                <li key={index}>
-                        
-                        {member.name}  {member.surname  } : 
-                        {member.id}  {member.tel} 
-                        <br/>
-                        <button style={{marginLeft:"6px" }} className="btn btn-info btn-sm"
-                        onClick={updateMember}>Update</button>
-
-                        <button style={{marginLeft:"6px"}} className="btn btn-danger btn-sm"
-                        onClick={()=>deleteMember(member._id)}>Delete</button>
-                        
-                </li> 
-            )
-        })
+    const deleteMember = async ()=>{
+        await axios.delete(`http://localhost/api/members/${props.no}`)
+        dispatch({type:'DELETE_MEMBER',no: props.no })
+        getMembers()
+          
     }
-    else{
-        return(<h1>No data</h1>)
-    }
-}
-return (
-<div>
-    <div className="jumbotron">
-      
-    <h1 style={{marginTop:"-30px",color:"red"}}>Edit and Delete Member</h1>
-    <ul>
-            {printMembers()}
-    </ul>
-
-    </div>
-
+    const updateMember = async () => {
+        await axios.put(`http://localhost/api/members/${props.no}`,form)
+         dispatch(
+             {type:'UPDATE_MEMBER',
+             no: props.no,
+             member:{...form, no:  props.no}
+         })
+         getMembers()
+         
+       }
+         
+       
     
-</div>
-);
-}
-export default MemberList
+       return(
+         
+        <div >
+          <table id="customers">
+            <tr>
+              <th>Name</th>
+              <th>Surname</th>
+              <th>ID nunber</th>
+              <th>Tel.</th>
+              <th>Edit</th>
+            </tr>
+            <tr>
+              <td>{props.name}</td>
+              <td>{props.surname}</td>
+              <td>{props.id}</td>
+              <td>{props.tel}</td>
+              
+              <button onClick={deleteMember}>Delete</button>
+              <button onClick={updateMember}>Update</button>
+            </tr>
+          </table>
+        </div>
+    
+    )
+   
 
+
+}
+export default MemberCard

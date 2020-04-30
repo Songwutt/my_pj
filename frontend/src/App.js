@@ -1,43 +1,43 @@
-import React, { useState } from 'react';
-import auth from './firebase';
+
+import React, { Component } from 'react';
 import './App.css';
-import Home from './components/Home'
-import {BrowserRouter as Router,Switch,Route} from 'react-router-dom'
-import About from './components/About'
-import Table from './components/Table'
+import fire from './firebase/config';
+import Login from './components/Login';
+import Home from './components/Home';
 
 
-function App() {
-  const [session, setSession] = useState({
-    isLoggedIn: false,
-    currentUser: null,
-    errorMessage: null
-    
-    
-  });
-  const handleLogout = () => {
-    auth.signOut().then(() => {
-      setSession({
-        isLoggedIn: false,
-        currentUser: null
-      });
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = ({
+      user: {},
     });
-  };
+    this.authListener = this.authListener.bind(this);
+  }
 
-  return (
+  componentDidMount() {
+    this.authListener();
+  }
 
-      <div>
-        <Router>
-        <Switch>
-          <Route path='/' exact component={Home}/>
-          <Route path='/About' exact component={About}/>
-          <Route path='/Table' exact component={Table}/>
-         
-        </Switch>
-  
-      </Router>
-      </div>
-    )
+  authListener() {
+    fire.auth().onAuthStateChanged((user) => {
+     // console.log(user);
+      if (user) {
+        this.setState({ user });
+       // localStorage.setItem('user', user.uid);
+      } else {
+        this.setState({ user: null });
+        //localStorage.removeItem('user');
+      }
+    });
+  }
+  render() {
+    return (
+      <div className="App">
+      {this.state.user ?  ( < Home/>) : (< Login />)}
+      </div> 
+    );
+  }
 }
 
 export default App;
