@@ -49,7 +49,7 @@ const InputForm = props => {
                         </td>
                     </tr>
                     <tr>
-                        <td>ID</td>
+                        <td>ID </td>
                         <td>
                         <input className='inpt'
                                 type="text"
@@ -58,7 +58,7 @@ const InputForm = props => {
                         </td>
                     </tr>
                     <tr>
-                        <td>Tel</td>
+                        <td>Tel.</td>
                         <td>
                         <input className='inpt'
                                 type="number"

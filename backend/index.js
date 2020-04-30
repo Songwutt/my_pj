@@ -33,7 +33,7 @@ router.route('/members/:member_no')
         let index = members.findIndex(member => (member.no === +no))
         res.json(members[index])                   // get a member
     })
-    .put((req, res) => {                               // Update a bear
+    .put((req, res) => {                               // Update a member
         let no = req.params.member_no
         let index = members.findIndex(member => (member.no === +no))
         members[index].name = req.body.name;
@@ -42,7 +42,7 @@ router.route('/members/:member_no')
         members[index].tel = req.body.tel;
         res.json({ message: 'member updated!' + req.params.member_no });
     })
-    .delete((req, res) => {                   // Delete a bear
+    .delete((req, res) => {                   // Delete a member
         let no = req.params.member_no
         let index = members.findIndex(member => member.no === +no)
         members.splice(index, 1)
@@ -51,4 +51,4 @@ router.route('/members/:member_no')
 
 
 app.use("*", (req, res) => res.status(404).send('404 Not found'));
-app.listen(80, () => console.log("Server is running"));
+app.listen(process.env.PORT || 80, () => console.log("Server is running"));

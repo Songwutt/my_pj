@@ -8,7 +8,7 @@ const MemberList = ()=>{
     const members = useSelector(state => state.member);
     const dispatch = useDispatch();
     const getMembers = async () => {
-        const result = await axios.get(`http://localhost/api/members`)
+        const result = await axios.get(`https://dcw-minipj-backend.herokuapp.com/api/members`)
        
         const action = {type:'GET_MEMBERS',member: result.data}
         dispatch(action)

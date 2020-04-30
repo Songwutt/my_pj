@@ -15,8 +15,8 @@ const Table = () => {
           />
           <br></br>
           <h1>Add Member</h1>
-            <div className="container" style={{ marginTop: "10px" }}>
-                <div className="container-fluid">
+            <div className="container" style={{ marginTop: "50px" }}>
+                <div className="container" style={{ marginright: "100" }}>
                     <br />
                     <InputForm />
                   
